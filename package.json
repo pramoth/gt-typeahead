@@ -1,6 +1,6 @@
 {
   "name": "gt-typeahead",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
@@ -11,7 +11,7 @@
     "e2e": "protractor",
     "prepublish": "tsc"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/common": "^2.3.1",
     "@angular/compiler": "^2.3.1",
