@@ -1,0 +1,7 @@
+<div>
+    <input type="text" name="{{name}}" (input)="term$.next($event.target.value)" [(ngModel)]="text" [disabled]="disabled">
+    <button type="button" class="btn btn-link" (click)="clear()">Clear</button>
+    <div class="dropdown show" *ngFor="let item of data?.content">
+        <div class="dropdown-item" (click)="select(item)">{{item[displayProp]}}</div>
+    </div>
+</div>
