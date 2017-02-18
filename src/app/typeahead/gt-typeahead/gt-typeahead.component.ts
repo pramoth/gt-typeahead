@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, forwardRef, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, OnInit, Input, forwardRef, OnChanges, SimpleChanges, EventEmitter, Output} from '@angular/core';
 import {Http} from "@angular/http";
 import {Subject} from "rxjs/Subject";
 
@@ -48,12 +48,16 @@ export class GtTypeaheadComponent implements OnInit,ControlValueAccessor,OnChang
     @Input()
     private name: string;
     @Input()
-    private disabled:boolean;
+    private disabled: boolean;
 
     private data;
     private text;
     private propagateChangeFn: any;
     private validateFn: Function;
+    @Output()
+    private selected = new EventEmitter < any >();
+    @Output("clear")
+    private clearEvent = new EventEmitter < any >();
 
     constructor(private http: Http) {
     }
@@ -73,6 +77,7 @@ export class GtTypeaheadComponent implements OnInit,ControlValueAccessor,OnChang
 
     select(value: any) {
         this.setValue(value);
+        this.selected.emit(value);
         this.propagateChangeFn(this.value);
     }
 
@@ -87,6 +92,7 @@ export class GtTypeaheadComponent implements OnInit,ControlValueAccessor,OnChang
         this.data = null;
         this.text = null;
         this.propagateChangeFn(this.value);
+        this.clearEvent.emit(this.value);
     }
 
     writeValue(value: any): void {

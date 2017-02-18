@@ -1,7 +1,7 @@
 <form #form="ngForm">
     <gt-typeahead url="http://localhost:8080/api/ctlt/location" variable="location" displayProp="locName"
                   name="ctrlLocation"
-                  [(ngModel)]="ctrLocation" [required]="true" [disabled]="false"></gt-typeahead>
+                  [(ngModel)]="ctrLocation" [required]="true" [disabled]="false" (selected)="select($event)"></gt-typeahead>
 </form>
 
 <pre>valid : {{ form.valid | json }}</pre>

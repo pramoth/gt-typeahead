@@ -8,4 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'app works!';
   ctrLocation:any;
+  select(value:any){
+    console.log(value)
+  }
 }
